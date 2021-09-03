@@ -1,0 +1,65 @@
+package Atividade;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner leitor = new Scanner(System.in);
+        char continuar = 'S';
+        double celsius;
+        double fahrenheit;
+        double reais;
+        double dolar;
+        double cotacaoDolar;
+
+        while (continuar == 'S' || continuar == 's') {
+            System.out.println("Digite o número que representa a conversão que voce deseja:");
+            System.out.println("1- Conversão de Celsius para Fahrenheit");
+            System.out.println("2- Conversão de Fahrenheit para Celsius");
+            System.out.println("3- Conversão de Dólar para Reais");
+            System.out.println("4- Conversão de Reais para Dólar");
+            byte menu = leitor.nextByte();
+
+            if (menu == 1) {
+                System.out.println("Informe a sua temperatura em Celsius:");
+                celsius = leitor.nextDouble();
+                fahrenheit = (celsius * 1.8) + 32;
+                System.out.println(+celsius + " C em Fahrenheit: " + fahrenheit + "F");
+            } else {
+                if (menu == 2) {
+                    System.out.println("Informe a sua temperatura em Fahrenheit:");
+                    fahrenheit = leitor.nextDouble();
+                    celsius = (fahrenheit - 32) / 1.8;
+                    System.out.println(+fahrenheit + "F em Celsius : " + celsius + "C");
+                } else {
+                    if (menu == 3) {
+                        System.out.println("Informe a cotação do dólar:");
+                        cotacaoDolar = leitor.nextDouble();
+                        System.out.println("Informe a quantidade de reais que você possui:");
+                        reais = leitor.nextDouble();
+                        dolar = reais / cotacaoDolar;
+                        System.out.println("Voce possui " + dolar + " US$");
+                    } else {
+                        if (menu == 4) {
+                            System.out.println("Informe a cotação do dólar:");
+                            cotacaoDolar = leitor.nextDouble();
+                            System.out.println("Informe a quantidade de dolares que voce possui:");
+                            dolar = leitor.nextDouble();
+                            reais = cotacaoDolar * dolar;
+                            System.out.println("Voce possui " + reais + " R$");
+                        }
+                    }
+                }
+
+            }
+
+            System.out.println("Deseja realizar uma nova consulta? (S-Sim ou N-Não)");
+            continuar = leitor.next().charAt(0);
+
+        }
+
+    }
+
+}
