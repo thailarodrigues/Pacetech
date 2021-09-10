@@ -1,0 +1,103 @@
+package ProjetoFinal;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner leitor = new Scanner(System.in);
+
+        Empregado empregadoUm = new Empregado();
+
+        System.out.println("Informe seu nome:");
+        empregadoUm.setNome(leitor.next());
+
+        System.out.println("Informe seu sobrenome:");
+        empregadoUm.setSobrenome(leitor.next());
+
+        System.out.println("Informe seu salário:");
+        empregadoUm.setSalarioMensal(leitor.nextFloat());
+
+        System.out.println("O salário anual do emprego  é de:" + empregadoUm.calcularSalarioAnual());
+        System.out.println("Aumentando o salário em 10%");
+        empregadoUm.aumentodeSalario(10);
+        System.out.println("O salário anual do emprego após os 10% é de:" + empregadoUm.calcularSalarioAnual());
+
+        Empregado empregadoDois = new Empregado();
+
+        System.out.println("Informe seu nome:");
+        empregadoDois.setNome(leitor.next());
+
+        System.out.println("Informe seu sobrenome:");
+        empregadoDois.setSobrenome(leitor.next());
+
+        System.out.println("Informe seu salário:");
+        empregadoDois.setSalarioMensal(leitor.nextFloat());
+
+        System.out.println("O salário anual do emprego  é de:" + empregadoDois.calcularSalarioAnual());
+        System.out.println("Aumentando o salário em 10%");
+        empregadoDois.aumentodeSalario(10);
+        System.out.println("O salário anual do emprego após os 10% é de:" + empregadoDois.calcularSalarioAnual());
+
+    }
+
+}
+
+package ProjetoFinal;
+
+public class Empregado {
+
+    private String nome;
+    private String sobrenome;
+    private float salarioMensal;
+
+    public Empregado(String nome, String sobrenome,float salarioMensal) {
+        this.setNome(nome);
+        this.setSobrenome(sobrenome);
+        this.setSalarioMensal(salarioMensal);
+ 
+    }
+    public Empregado(){
+        
+    }
+    
+    public float calcularSalarioAnual(){
+      float SalarioAnual = salarioMensal * 12;
+      return SalarioAnual;
+    }
+    
+    public float aumentodeSalario(float percentual){
+        this.salarioMensal= salarioMensal + (salarioMensal * (percentual/100));
+        return this.salarioMensal;
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public float getSalarioMensal() {
+        return salarioMensal;
+    }
+
+    public void setSalarioMensal(float salarioMensal) {
+        if (salarioMensal < 0) {
+            this.salarioMensal = 0;
+        } else {
+            this.salarioMensal = salarioMensal;
+        }
+
+    }
+}
